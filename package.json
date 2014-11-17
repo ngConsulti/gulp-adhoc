@@ -1,7 +1,7 @@
 {
   "name":"gulp-adhoc",
   "description":"Easily compose sequential and parallel task on the command line.",
-  "version":"0.0.3",
+  "version":"0.0.4",
   "homepage":"http://github.com/ngConsulti/gulp-adhoc",
   "keywords": ["gulpfriendly"],
 
@@ -22,7 +22,6 @@
     }
   ],
   "peerDependencies": {
-    "gulp": "^3.6.0",
-    "run-sequence": "^0.3.6"
+    "gulp": "https://github.com/gulpjs/gulp/archive/a7a20403190e920639c6f02c38d6269b6208fe59.tar.gz"
   }
 }

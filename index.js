@@ -1,17 +1,15 @@
 /* jshint node:true */
 'use strict';
 
-var runs  = require('run-sequence');
-
-module.exports = function(gulp, env) {
+module.exports = function (gulp, env) {
 
   function createTask(taskName, taskSets) {
-    return gulp.task(taskName, function(done) {
-      runs.apply(null, taskSets.concat([done]));
-    });
+    return gulp.task(taskName, gulp.series.apply(gulp, taskSets.map(function (taskSet) {
+      return Array.isArray(taskSet) ? gulp.parallel.apply(gulp, taskSet) : taskSet;
+    })));
   }
 
-  // For each param, check if it is an adhoc task.
+  // For each CLI param, check if it is an adhoc task (contains commas or brackets).
   // If so, create a new task with the same name.
   env._.forEach( function(task) {
     if (/(,|\[)/.test(task)) {
